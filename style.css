@@ -1,0 +1,236 @@
+*,*::before,*::after {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: "PublicSans";
+}
+
+@font-face {font-family: "Lato"; src: url("Lato.ttf")}
+@font-face {font-family: "Geograph"; src: url("Geograph.ttf")}
+@font-face {font-family: "Paddington"; src: url("PaddingtonSC.ttf")}
+@font-face {font-family: "PublicSans"; src: url("PublicSans.ttf")}
+
+*::selection {background: #f8e282;}
+*::-webkit-scrollbar {display: none;}
+html {scroll-behavior: smooth !important;}
+
+:root {
+  --orange: rgb(222, 165, 81);
+  --yellow: rgb(242, 241, 169);
+  --red: rgb(213, 63, 63);
+  --brown: rgb(118, 73, 49);
+}
+
+body, .extraBG, #boundaryBG, .transform, .converge, .diverge, #mainBG, .vidBG, .textBG, .textTXT {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+body {background-color: var(--yellow); justify-content: space-around;}
+
+#header {
+	z-index: 1000;
+	position: fixed;
+	top: 0vh;
+	left: 0vw;
+	width: 100vw;
+	height: 10vh;
+	background-color: rgb(234, 186, 114);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  border: 1vh solid var(--red);
+}
+
+#header p {
+	z-index: 1000;
+	position: relative;
+	color: white;
+	text-align: center;
+	margin-left: 5vw;
+	margin-right: 5vw;
+	font-size: 1.4vw;
+}
+
+#header p a, #header p i {font-family: "Lato"; font-weight: 700; letter-spacing: 0.14vw;}
+
+#boundaryLine {
+  position: absolute;
+  top: 0vh;
+  width: 4vh;
+  height: 20vh;
+  background-color: var(--red);
+  transition: height 2000ms;
+  transform: translate(-10vw, 0vh);
+}
+
+.boundaryBtn {
+  position: absolute;
+  width: 10vh;
+  height: 10vh;
+  background-color: rgb(126, 205, 191);
+  border-radius: 100%;
+  border: 1.8vh solid white;
+  transition: transform 2800ms ease-in 2000ms,
+    background-color 300ms ease-in-out 50ms;
+}
+
+.boundaryBtn:hover {background-color: rgb(69, 130, 222); cursor: pointer;}
+
+body > div, body > p {z-index: 5;}
+body > div:nth-child(3) {transform: translate(20vw, 30vh);}
+body > div:nth-child(4) {transform: translate(20vw, 55vh);}
+body > div:nth-child(5) {transform: translate(20vw, 80vh);}
+
+.boundaryTXT {
+  position: absolute;
+  color: rgb(68, 68, 68);
+  font-weight: 600;
+  font-size: 6vh;
+  transition: transform 2800ms ease-in 2000ms;
+}
+
+#tTXT {transform: translate(34vw, 30vh);}
+#cTXT {transform: translate(34vw, 55vh);}
+#dTXT {transform: translate(34vw, 80vh);}
+
+#boundaryBG {
+  z-index: 0;
+  position: fixed;
+  background-color: var(--yellow);
+  height: 100vh;
+  width: 100vw;
+  bottom: 0;
+  transform: translate(-10vw, 8vh);
+  transition: transform 2000ms ease-in 2000ms;
+}
+
+#boundaryBG * {user-select: none;}
+
+.transform, .converge, .diverge {
+  position: absolute;
+  color: white;
+  font-size: 10vh;
+  font-weight: 900;
+  width: 18vw;
+  padding-bottom: 2vh;
+  transition: transform 1000ms ease-in-out 50ms,
+    opacity 1000ms ease-in-out 50ms;
+}
+
+.transform {
+  background-color: rgb(121, 222, 123);
+  transform: translate(0vw, -25vh);
+  height: 10vh;
+}
+
+#boundaryBG div:nth-child(1) {transform: translate(0vw, -30vh); border-bottom: 0.5vh solid rgb(60, 169, 62);}
+#boundaryBG div:nth-child(2) {transform: translate(0vw, -20vh); border-top: 0.5vh solid rgb(60, 169, 62);}
+
+.converge, .diverge {
+  height: 20vh;
+  background-color: var(--brown);
+  border-top: 4vh solid rgb(121, 222, 123);
+}
+
+#boundaryBG div:nth-child(3) {transform: translate(-18vw, 0vh); border-left: 2vh solid rgb(66, 46, 31);}
+#boundaryBG div:nth-child(4) {transform: translate(0vw, 0vh); border-right: 2vh solid rgb(66, 46, 31);}
+#boundaryBG div:nth-child(5) {transform: translate(-9vw, 25vh); border-left: 2vh solid rgb(66, 46, 31);}
+#boundaryBG div:nth-child(6) {transform: translate(9vw, 25vh); border-right: 2vh solid rgb(66, 46, 31);}
+
+#mainBG {
+  z-index: 50;
+  position: absolute;
+  background-color: white;
+  transition: 2000ms ease-in-out; 
+  width: 100vw;
+  height: 100vh;
+  transform: translate(0vw, 200vh);
+  flex-direction: column;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+#pt1 + .textBG {transform: translate(0vw, 100vh);}
+#pt1 + .textBG + .textBG {transform: translate(0vw, 200vh);}
+#pt2 {transform: translate(0vw, 300vh);}
+#pt2 + .textBG {transform: translate(0vw, 400vh);}
+#ssbs {transform: translate(0vw, 485vh);}
+#pt3 {transform: translate(0vw, 585vh);}
+#drpt {transform: translate(0vw, 685vh); flex-direction: row-reverse; gap: 2vw;}
+#eelp {transform: translate(0vw, 800vh); padding-bottom: 17vh; gap: 2vw;}
+
+.mainTXT {
+  position: absolute;
+  color: darkblue;
+  font-size: 9vw;
+  letter-spacing: 1vw;
+  line-height: 11vw;
+  font-family: "PaddingtonSC";
+}
+
+.textBG {
+  position: absolute;
+  flex-direction: column;
+  max-width: 80vw;
+}
+
+.textTXT {
+  flex-direction: row;
+  font-family: "Geograph";
+  font-size: 1.15vw;
+  text-align: justify;
+  align-items: flex-start;
+  line-height: 2.3vw;
+  gap: 4vw;
+}
+
+.title {font-weight: 900; font-size: 3vw;}
+hr {height: 0.4vh; border-radius: 100%;}
+.textBG hr {height: 0.8vh; width: 80vw;}
+
+.vidBG {
+  position: absolute;
+  flex-direction: row;
+  gap: 4vw;
+}
+
+.vidTXT {
+  font-family: "Geograph";
+  font-size: 1.3vw;
+  transform: translate(0vw, -1.3vw);
+}
+
+#mainBG video {border-radius: 5%; width: 50vw;}
+
+.extraBG {
+	z-index: 97;
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(241, 242, 242);
+  text-align: left;
+  border: 1vh dashed rgb(12, 12, 107);
+  overflow-y: scroll;
+}
+
+.sourcesTXT {
+  position: absolute;
+  top: 0vh;
+  padding: 2vh 5vw 2vh 5vw;
+  font-family: "Lato", sans-serif;
+  color: rgb(54, 54, 184);
+  font-weight: 900;
+  font-size: 1.2vw; 
+  padding: 6vw 0vw 6vw 0vw;
+}
+
+.sourcesTXT span {
+  color: rgb(251, 115, 42);
+  font-family: "Geograph";
+  font-size: 2vw;
+}
+
+.mediaTXT {width: 65vw;}
